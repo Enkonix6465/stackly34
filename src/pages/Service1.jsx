@@ -519,12 +519,13 @@ const Service1 = () => {
     padding: 80px 0;
   }
 
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 60px;
-  }
+ .features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* always 3 columns */
+  gap: 30px;
+  margin-top: 60px;
+}
+
     .feature-card {
     background: var(--card-bg, #111);
     border: 1px solid rgba(0, 123, 255, 0.4);
@@ -619,6 +620,17 @@ const Service1 = () => {
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   }
+
+  @media (max-width: 900px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+        }
 
 
 
