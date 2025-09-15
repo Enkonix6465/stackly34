@@ -428,51 +428,59 @@ const Home1 = () => {
           </div>
         </div>
       </section>
+{/* Features Section */}
+<section className="features-section">
+  <div className="container mx-auto px-4">
+    <motion.div
+      className="section-header"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      <h2>{t.featuresSection.heading}</h2>
+      <p>{t.featuresSection.subtitle}</p>
+    </motion.div>
+    <div className="features-grid">
+      {t.featuresSection.features.map(({ icon: Icon, title, description, color }, idx) => (
+        <FeatureCard
+          key={idx}
+          Icon={Icon}
+          title={title}
+          description={description}
+          color={color}
+          delay={idx * 0.15}
+        />
+      ))}
+    </div>
+  </div>
+</section>
 
-      {/* Features Section */}
-      <section className="section features-section">
-        <div className="container">
-          <motion.div
-            className="section-header text-center"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2>{t.featuresSection.heading}</h2>
-            <p>{t.featuresSection.subtitle}</p>
-          </motion.div>
-          <div className="features-grid">
-            {t.featuresSection.features.map(({ icon: Icon, title, description, color }, idx) => (
-              <FeatureCard key={idx} Icon={Icon} title={title} description={description} color={color} delay={idx * 0.15} />
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Stats Section */}
-      <section className="stats" ref={ref}>
-        <div className="container">
-          <div className="stats-grid">
-            {t.stats.map(({ number, suffix, label, icon: Icon }, idx) => (
-              <motion.div
-                className="stat-item"
-                key={idx}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <Icon className="stat-icon" />
-                <h3>
-                  {inView ? <CountUp start={0} end={number} duration={2.5} separator="," /> : "0"}
-                  {suffix}
-                </h3>
-                <p>{label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+     <section className="stats" ref={ref}>
+  <div className="container">
+    <div className="stats-grid">
+      {t.stats.map(({ number, suffix, label, icon: Icon }, idx) => (
+        <motion.div
+          className="stat-item"
+          key={idx}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: idx * 0.1 }}
+        >
+          <Icon className="stat-icon" />
+          <h3>
+            {inView ? <CountUp start={0} end={number} duration={2.5} separator="," /> : "0"}
+            {suffix}
+          </h3>
+          <p>{label}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Testimonials Section */}
       <section className="testimonials-section" id="testimonials">
@@ -740,7 +748,7 @@ const Home1 = () => {
 .section-header p {
   font-size: 1.4rem;
   color: var(--text-muted);
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   max-width: 700px;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -764,7 +772,7 @@ const Home1 = () => {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: box-shadow 0.3s ease, transform 0.35s ease;
+  transition: box-shadow 0.3s, transform 0.35s;
   cursor: pointer;
   min-height: 390px;
   border: none;
@@ -787,7 +795,7 @@ const Home1 = () => {
   justify-content: center;
   margin-bottom: 30px;
   filter: drop-shadow(0 0 16px currentColor);
-  transition: background-color 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s, filter 0.3s, transform 0.3s;
 }
 
 .feature-card:hover .feature-icon {
@@ -818,7 +826,7 @@ const Home1 = () => {
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .feature-link:hover {
@@ -826,13 +834,59 @@ const Home1 = () => {
   transform: translateX(12px);
 }
 
+/* Responsive tweaks */
 @media (max-width: 992px) {
   .features-grid {
     grid-template-columns: 1fr;
     max-width: 100vw;
     padding: 0 16px;
+    gap: 24px;
+  }
+  .section-header h2 {
+    font-size: 2.4rem;
+  }
+  .section-header p {
+    font-size: 1.1rem;
+    max-width: 90%;
+  }
+  .feature-card {
+    min-height: auto;
+    padding: 28px 20px 32px;
+  }
+  .feature-icon {
+    font-size: 48px;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 24px;
+  }
+  .feature-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+  .feature-card p {
+    font-size: 1rem;
+    margin-bottom: 24px;
   }
 }
+
+@media (max-width: 480px) {
+  .features-section {
+    padding: 56px 16px;
+  }
+  .feature-icon {
+    font-size: 40px;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
+  }
+  .feature-card h3 {
+    font-size: 1.6rem;
+  }
+  .feature-card p {
+    font-size: 0.9rem;
+  }
+}
+
 
         {/* About Me Section */}
 
@@ -889,7 +943,7 @@ const Home1 = () => {
 .stats {
   background: linear-gradient(135deg, #5058c9ff, #3b77eeff, #2f83e3ff);
   color: #eef2f3;
-  padding: 60px 0;
+  padding: 60px 20px;
   min-height: 350px;
   display: flex;
   align-items: center;
@@ -899,7 +953,6 @@ const Home1 = () => {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
   width: 100%;
 }
 
@@ -915,11 +968,11 @@ const Home1 = () => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 200px;
   padding: 30px 20px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .stat-item:hover {
@@ -929,7 +982,7 @@ const Home1 = () => {
 
 .stat-icon {
   font-size: 4rem;
-  color: #000000ff; /* accent green */
+  color: #000000ff;
   margin-bottom: 20px;
   filter: drop-shadow(0 0 6px #c2c0c0ff);
 }
@@ -949,6 +1002,17 @@ const Home1 = () => {
   margin: 0;
 }
 
+/* Mobile responsiveness tweaks */
+@media (max-width: 992px) {
+  .stats {
+    padding: 50px 16px;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+  }
+}
+
 @media (max-width: 768px) {
   .stats-grid {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -960,7 +1024,35 @@ const Home1 = () => {
   .stat-icon {
     font-size: 3rem;
   }
+  .stat-item p {
+    font-size: 1.1rem;
+  }
 }
+
+@media (max-width: 480px) {
+  .stats {
+    padding: 40px 12px;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .stat-item {
+    padding: 24px 16px;
+    border-radius: 1rem;
+  }
+  .stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  .stat-item h3 {
+    font-size: 2rem;
+  }
+  .stat-item p {
+    font-size: 1rem;
+  }
+}
+
 
 
 {/* Services Section */}

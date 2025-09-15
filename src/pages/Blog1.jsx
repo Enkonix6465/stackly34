@@ -172,7 +172,29 @@ const translations = {
       },
     ],
     backToBlog: "← Retour au blog",
-  }
+  },
+};
+
+const responsive = {
+  container: {
+    maxWidth: "800px",
+    margin: "0 auto",
+    padding: "0 10px",
+  },
+  headerTitle: {
+    fontSize: "2.5rem",
+  },
+  sectionTitle: {
+    fontSize: "1.8rem",
+  },
+  excerpt: {
+    fontSize: "1.1rem",
+  },
+};
+
+const mediaQueryStyles = {
+  mobile: "@media (max-width: 600px)",
+  tablet: "@media (max-width: 900px)",
 };
 
 const Blog1 = () => {
@@ -193,10 +215,21 @@ const Blog1 = () => {
         padding: "120px 20px 60px",
         background: "var(--bg-color)",
         minHeight: "100vh",
-        color: "var(--text-color)"
+        color: "var(--text-color)",
       }}
     >
-      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+      <div
+        style={{
+          ...responsive.container,
+          [`${mediaQueryStyles.tablet}`]: {
+            maxWidth: "600px",
+          },
+          [`${mediaQueryStyles.mobile}`]: {
+            maxWidth: "100%",
+            padding: "0 15px",
+          },
+        }}
+      >
         <motion.header
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -205,11 +238,13 @@ const Blog1 = () => {
         >
           <h1
             style={{
-              fontSize: "2.5rem",
+              fontSize: responsive.headerTitle.fontSize,
               fontWeight: "700",
               color: "var(--heading-color)",
               marginBottom: "20px",
-              lineHeight: "1.2"
+              lineHeight: "1.2",
+              [`${mediaQueryStyles.tablet}`]: { fontSize: "2rem" },
+              [`${mediaQueryStyles.mobile}`]: { fontSize: "1.6rem" },
             }}
           >
             {t.title}
@@ -219,7 +254,10 @@ const Blog1 = () => {
               width: "100%",
               borderRadius: "15px",
               overflow: "hidden",
-              marginBottom: "20px"
+              marginBottom: "20px",
+              height: "230px",
+              [`${mediaQueryStyles.mobile}`]: { height: "160px" },
+              [`${mediaQueryStyles.tablet}`]: { height: "180px" },
             }}
           >
             <img
@@ -227,11 +265,11 @@ const Blog1 = () => {
               alt="Freelancer with laptop"
               style={{
                 width: "100%",
-                height: "230px",
+                height: "100%",
                 objectFit: "cover",
                 display: "block",
                 borderRadius: "12px",
-                background: "#eaeaea"
+                background: "#eaeaea",
               }}
             />
           </div>
@@ -242,7 +280,9 @@ const Blog1 = () => {
               gap: "20px",
               fontSize: "0.95rem",
               color: "var(--text-secondary)",
-              marginBottom: "14px"
+              marginBottom: "14px",
+              flexWrap: "wrap",
+              [`${mediaQueryStyles.mobile}`]: { fontSize: "0.85rem", gap: "10px" },
             }}
           >
             <span>{t.author}</span>
@@ -256,18 +296,21 @@ const Blog1 = () => {
               display: "flex",
               gap: "10px",
               flexWrap: "wrap",
-              marginBottom: "4px"
+              marginBottom: "4px",
             }}
           >
             {t.categories.map((cat, idx) => (
               <span
                 key={idx}
                 style={{
-                  background: idx === 0 ? "var(--primary-color)" : mainHeadingColors[idx % mainHeadingColors.length],
+                  background:
+                    idx === 0
+                      ? "var(--primary-color)"
+                      : mainHeadingColors[idx % mainHeadingColors.length],
                   color: "white",
                   padding: "4px 12px",
                   borderRadius: "20px",
-                  fontSize: "0.85rem"
+                  fontSize: "0.85rem",
                 }}
               >
                 {cat}
@@ -285,26 +328,47 @@ const Blog1 = () => {
             borderRadius: "12px",
             padding: "40px",
             boxShadow: "var(--shadow)",
-            lineHeight: "1.8"
+            lineHeight: "1.8",
+            [`${mediaQueryStyles.mobile}`]: { padding: "20px" },
+            [`${mediaQueryStyles.tablet}`]: { padding: "30px" },
           }}
         >
-          <p style={{ marginBottom: "25px", fontSize: "1.1rem" }}>{t.excerpt}</p>
+          <p
+            style={{
+              marginBottom: "25px",
+              fontSize: responsive.excerpt.fontSize,
+              [`${mediaQueryStyles.mobile}`]: { fontSize: "1rem" },
+              [`${mediaQueryStyles.tablet}`]: { fontSize: "1.05rem" },
+            }}
+          >
+            {t.excerpt}
+          </p>
 
           {t.sections.map((section, idx) => (
             <div key={idx}>
               <h2
                 style={{
-                  fontSize: "1.8rem",
+                  fontSize: responsive.sectionTitle.fontSize,
                   color: section.color,
                   marginTop: idx === 0 ? "35px" : "20px",
                   marginBottom: "20px",
-                  fontWeight: 700
+                  fontWeight: 700,
+                  [`${mediaQueryStyles.mobile}`]: { fontSize: "1.4rem" },
+                  [`${mediaQueryStyles.tablet}`]: { fontSize: "1.5rem" },
                 }}
               >
                 {section.title}
               </h2>
               {section.points ? (
-                <ul style={{ paddingLeft: "23px", marginBottom: "25px" }}>
+                <ul
+                  style={{
+                    paddingLeft: "23px",
+                    marginBottom: "25px",
+                    fontSize: "1rem",
+                    [`${mediaQueryStyles.mobile}`]: { fontSize: "0.9rem" },
+                    [`${mediaQueryStyles.tablet}`]: { fontSize: "0.95rem" },
+                  }}
+                >
                   {section.points.map((point, i) => (
                     <li key={i} style={{ marginBottom: "11px" }}>
                       <b>{point.split(":")[0]}:</b> {point.split(":")[1]}
@@ -312,7 +376,16 @@ const Blog1 = () => {
                   ))}
                 </ul>
               ) : (
-                <p style={{ marginBottom: "25px" }}>{section.content}</p>
+                <p
+                  style={{
+                    marginBottom: "25px",
+                    fontSize: "1rem",
+                    [`${mediaQueryStyles.mobile}`]: { fontSize: "0.9rem" },
+                    [`${mediaQueryStyles.tablet}`]: { fontSize: "0.95rem" },
+                  }}
+                >
+                  {section.content}
+                </p>
               )}
             </div>
           ))}
@@ -334,7 +407,8 @@ const Blog1 = () => {
               borderRadius: "8px",
               textDecoration: "none",
               fontWeight: "600",
-              transition: "all 0.3s"
+              transition: "all 0.3s",
+              [`${mediaQueryStyles.mobile}`]: { padding: "10px 20px", fontSize: "0.9rem" },
             }}
           >
             {t.backToBlog}

@@ -567,22 +567,23 @@ const Home2 = () => {
       </section>
 
       {/* Orbit Skills Section */}
-      <section className="orbit__section">
-        <div className="orbit__bg-grid" />
-        <h2 className="orbit__heading">{t.orbitSection.heading}</h2>
-        <p className="orbit__para">{t.orbitSection.paragraph}</p>
-        <div className="orbit__wrapper">
-          <div className="orbit__container">
-            <div className="orbit__center-bubble">Skills</div>
-            <div className="orbit__path" />
-            {t.orbitSection.skills.map(({ name, delay }) => (
-              <div key={name} className="orbit__bubble" style={{ animationDelay: delay }}>
-                {name}
-              </div>
-            ))}
-          </div>
+     <section className="orbit__section">
+  <div className="orbit__bg-grid" />
+  <h2 className="orbit__heading">{t.orbitSection.heading}</h2>
+  <p className="orbit__para">{t.orbitSection.paragraph}</p>
+  <div className="orbit__wrapper">
+    <div className="orbit__container">
+      <div className="orbit__center-bubble">Skills</div>
+      <div className="orbit__path" />
+      {t.orbitSection.skills.map(({ name, delay }) => (
+        <div key={name} className="orbit__bubble" style={{ animationDelay: delay }}>
+          {name}
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Services Section */}
       <section className="services-section">
@@ -1703,6 +1704,7 @@ body.dark {
   line-height: 1.6;
 }
 
+/* Layout grid for desktop/tablet */
 .infographic-grid {
   display: flex;
   gap: 36px;
@@ -1713,6 +1715,7 @@ body.dark {
   margin: 0 auto;
 }
 
+/* Card styling */
 .infographic-card {
   background: var(--card-bg);
   border-radius: 22px;
@@ -1727,6 +1730,7 @@ body.dark {
   align-items: flex-start;
   transition: background 0.3s, box-shadow 0.3s;
 }
+
 .infographic-card-title {
   font-size: 1.21rem;
   font-weight: 700;
@@ -1735,6 +1739,7 @@ body.dark {
   text-align: left;
 }
 
+/* Chart and legend layout */
 .infographic-chart-horizontal {
   min-width: 330px;
   width: 370px;
@@ -1742,7 +1747,6 @@ body.dark {
   align-items: center;
   justify-content: flex-start;
 }
-
 .infographic-chart-row {
   display: flex;
   align-items: center;
@@ -1756,6 +1760,7 @@ body.dark {
   align-items: center;
   justify-content: center;
 }
+
 .donut-legend-list {
   list-style: none;
   padding: 0;
@@ -1782,6 +1787,8 @@ body.dark {
   margin-left: 2px;
   box-shadow: 0 0 2px rgba(0,0,0,0.05);
 }
+
+/* Takeaways */
 .infographic-card.infographic-takeaways {
   max-width: 370px;
   min-width: 260px;
@@ -1806,7 +1813,6 @@ body.dark {
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 
-
 .takeaway-icon {
   font-size: 1em;
   color: #fff;
@@ -1823,6 +1829,8 @@ body.dark {
   margin-left: 2px;
   font-weight: 450;
 }
+
+/* Tablet stack and padding */
 @media (max-width: 900px) {
   .infographic-grid {
     flex-direction: column;
@@ -1841,7 +1849,16 @@ body.dark {
     gap: 10px;
   }
 }
+
+/* MOBILE FULLY RESPONSIVE */
 @media (max-width: 600px) {
+  .infographic-title {
+    font-size: 1.45rem;
+  }
+  .infographic-desc {
+    font-size: 0.99rem;
+    margin-bottom: 18px;
+  }
   .infographic-chart-row {
     flex-direction: column;
     gap: 18px;
@@ -1853,15 +1870,43 @@ body.dark {
     width: 98vw;
     max-width: 99vw;
     padding: 10px 0 10px 0;
+    margin: 0 auto 13px auto;
+    align-items: center;
+    text-align: center;
+  }
+  .infographic-card-title {
+    text-align: center;
+    width: 100%;
+    font-size: 1.03rem;
+    margin-bottom: 10px;
+  }
+  .infographic-pie-container-horizontal {
+    width: 120px;
+    height: 120px;
   }
   .donut-legend-list {
-    min-width: 90px;
-    font-size: 0.97rem;
+    min-width: 80px;
+    font-size: 0.93rem;
     gap: 7px;
     align-items: flex-start;
+    margin: 0 auto;
   }
-    
+  .takeaway-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
 }
+
+/* Extra small devices */
+@media (max-width: 410px) {
+  .infographic-title { font-size: 1.14rem; }
+  .infographic-card { padding: 6px 0 6px 0; }
+  .infographic-pie-container-horizontal { width: 90px; height: 90px; }
+  .donut-legend-list { min-width: 40px; font-size: 0.88rem; }
+}
+
 
         .cta-section {
   position: relative;

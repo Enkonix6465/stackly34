@@ -708,61 +708,132 @@ export default function ContactPage() {
           justify-content: center;
         }
 
-        /* Contact Details */
-        .contact-details-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
-          gap: 20px;
-          margin-bottom: 30px;
-        }
-        .detail-card {
-          display: flex;
-          align-items: center;
-          background-color: var(--input-bg);
-          padding: 20px 18px;
-          border-radius: 16px;
-          box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-          gap: 15px;
-        }
-        .detail-card .detail-icon {
-          width: 46px;
-          height: 46px;
-          background-color: var(--primary-color);
-          color: white;
-          border-radius: 18px;
-          font-size: 1.5rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 0 12px rgba(0,123,255,0.6);
-        }
-        .contact-social {
-          display: flex;
-          gap: 20px;
-          align-items: center;
-          font-size: 1rem;
-          color: var(--text-muted);
-        }
-        .contact-social span {
-          font-weight: 600;
-          margin-right: 12px;
-        }
-        .contact-social a {
-          display: flex;
-          width: 38px;
-          height: 38px;
-          border-radius: 14px;
-          background-color: var(--input-bg);
-          color: var(--primary-color);
-          font-size: 1.6rem;
-          justify-content: center;
-          align-items: center;
-          transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .contact-social a:hover {
-          background-color: var(--primary-color);
-          color: white;
-        }
+/* Contact Details Grid - Desktop Default */
+.contact-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Always 2 columns on desktop */
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.detail-card {
+  display: flex;
+  align-items: center;
+  background-color: var(--input-bg);
+  padding: 20px 18px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  gap: 15px;
+}
+
+.detail-card .detail-icon {
+  width: 46px;
+  height: 46px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 18px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(0,123,255,0.6);
+}
+
+.contact-social {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.contact-social span {
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.contact-social a {
+  display: flex;
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  background-color: var(--input-bg);
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-social a:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Tablet Responsive */
+@media (max-width: 900px) {
+  .contact-details-grid {
+    grid-template-columns: 1fr; /* Stack cards vertically */
+    gap: 16px;
+  }
+  .detail-card {
+    padding: 18px 14px;
+    border-radius: 14px;
+    font-size: 0.98rem;
+  }
+  .detail-card .detail-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.3rem;
+    border-radius: 16px;
+  }
+  .contact-social {
+    gap: 16px;
+    font-size: 0.96rem;
+  }
+  .contact-social a {
+    width: 34px;
+    height: 34px;
+    font-size: 1.4rem;
+    border-radius: 12px;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .contact-details-grid {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 13px;
+  }
+  .detail-card {
+    padding: 14px 10px;
+    border-radius: 11px;
+    font-size: 0.92rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11px;
+  }
+  .detail-card .detail-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+  }
+  .contact-social {
+    gap: 12px;
+    font-size: 0.88rem;
+  }
+  .contact-social span {
+    margin-right: 7px;
+    font-size: 0.93rem;
+  }
+  .contact-social a {
+    width: 29px;
+    height: 29px;
+    font-size: 1.1rem;
+    border-radius: 9px;
+  }
+}
 
         /* FAQ */
         .faq-list details {

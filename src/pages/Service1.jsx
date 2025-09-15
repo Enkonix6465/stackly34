@@ -255,48 +255,49 @@ const Service1 = () => {
         </section>
 
         {/* Gallery Section */}
-        <section className="section gallery-wrapper">
-          <div className="container">
-            <motion.div
-              className="gallery-header"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="gallery-title">{t.galleryTitle}</h2>
-              <p className="gallery-subtitle">{t.gallerySubtitle}</p>
-            </motion.div>
+ <section className="section gallery-wrapper">
+  <div className="container">
+    <motion.div
+      className="gallery-header"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      <h2 className="gallery-title">{t.galleryTitle}</h2>
+      <p className="gallery-subtitle">{t.gallerySubtitle}</p>
+    </motion.div>
 
-            <div className="gallery-container">
-              {/* First Row */}
-              <div className="gallery-row">
-                <div className="gallery-big">
-                  <img src="images/individual13.jpg" alt="Cloud infrastructure overview" />
-                </div>
-                <div className="gallery-grid">
-                  <img src="images/individual2.jpg" alt="Server management" />
-                  <img src="images/individual3.jpg" alt="Cloud security" />
-                  <img src="images/individual4.jpg" alt="Server management" />
-                  <img src="images/individual5.jpg" alt="Cloud security" />
-                </div>
-              </div>
+    <div className="gallery-container">
+      {/* First Row */}
+      <div className="gallery-row">
+        <div className="gallery-big">
+          <img src="images/individual13.jpg" alt="Cloud infrastructure overview" />
+        </div>
+        <div className="gallery-grid">
+          <img src="images/individual2.jpg" alt="Server management" />
+          <img src="images/individual3.jpg" alt="Cloud security" />
+          <img src="images/individual4.jpg" alt="Server management" />
+          <img src="images/individual5.jpg" alt="Cloud security" />
+        </div>
+      </div>
 
-              {/* Second Row */}
-              <div className="gallery-row reverse">
-                <div className="gallery-big">
-                  <img src="images/individual6.jpg" alt="Global network map" />
-                </div>
-                <div className="gallery-grid">
-                  <img src="images/individual7.jpg" alt="Compliance and Governance" />
-                  <img src="images/individual8.jpg" alt="Custom cloud solutions" />
-                  <img src="images/individual9.jpg" alt="Server management" />
-                  <img src="images/individual10.jpg" alt="Cloud security" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+      {/* Second Row */}
+      <div className="gallery-row reverse">
+        <div className="gallery-big">
+          <img src="images/individual6.jpg" alt="Global network map" />
+        </div>
+        <div className="gallery-grid">
+          <img src="images/individual7.jpg" alt="Compliance and Governance" />
+          <img src="images/individual8.jpg" alt="Custom cloud solutions" />
+          <img src="images/individual9.jpg" alt="Server management" />
+          <img src="images/individual10.jpg" alt="Cloud security" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* CTA Section */}
         <section className="cta-section">
@@ -705,92 +706,142 @@ const Service1 = () => {
             border-radius: 50px;
           }
 
-          .gallery-wrapper {
-    background: var(--sidebar-bg); /* Uses sidebar background for both themes */
-    padding: 80px 40px;
-    font-family: "Segoe UI", sans-serif;
-    transition: background-color 0.3s ease; /* Smooth transition on theme change */
+
+
+
+{/*gallery section*/}
+.gallery-wrapper {
+  background: var(--sidebar-bg); 
+  padding: 80px 40px;
+  font-family: "Segoe UI", sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.gallery-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.gallery-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 15px;
+}
+
+.gallery-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.gallery-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.gallery-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.gallery-big img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: height 0.3s ease;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  flex: 1;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.03);
+}
+
+/* -------- MOBILE RESPONSIVE -------- */
+@media (max-width: 992px) {
+  .gallery-wrapper {
+    padding: 60px 20px;
   }
-
-
-  .gallery-header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 60px;
-  }
-
-  .gallery-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--heading-color);
-    margin-bottom: 15px;
-  }
-
-  .gallery-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-
-  .gallery-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .gallery-row {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    align-items: stretch;
-  }
-
+  .gallery-row,
   .gallery-row.reverse {
-    flex-direction: row-reverse;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .gallery-big img {
+    height: 350px;
+  }
+  .gallery-grid img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-row,
+  .gallery-row.reverse {
+    flex-direction: column !important; /* Stack big image above grid */
+    gap: 200px;
   }
 
-  .gallery-big img {
+  .gallery-big {
     width: 100%;
-    height: 500px;
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    height: 200px;
+    margin-top: 16px; /* Adds gap above big image on mobile */
   }
 
   .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    flex: 1;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
   .gallery-grid img {
     width: 100%;
-    height: 240px;
+    height: 100px;
     object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease;
+    border-radius: 10px;
+    display: block;
   }
+}
 
-  .gallery-grid img:hover {
-    transform: scale(1.03);
-  }
 
-  /* Responsive */
-  @media (max-width: 992px) {
-    .gallery-row,
-    .gallery-row.reverse {
-      flex-direction: column;
-    }
-    .gallery-big img {
-      height: 350px;
-    }
-    .gallery-grid img {
-      height: 180px;
-    }
+@media (max-width: 400px) {
+  .gallery-wrapper {
+    padding: 20px 3px;
   }
+  .gallery-big img {
+    height: 126px;
+  }
+  .gallery-grid img {
+    height: 86px;
+  }
+}
+
+
 
 
         .cta-section {
