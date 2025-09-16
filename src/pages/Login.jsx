@@ -680,6 +680,7 @@ const Login = () => {
         .glass-login-card.signup-active {
           padding: 18px 10px 10px 10px;
           max-width: 510px;
+           padding-top: 0px;
         }
         .signup-header-main {
           font-size: 2.3rem;
